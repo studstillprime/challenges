@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Challenge 1: Create and Delete a File!
+clear
+
+if [ !  -d "./tmp" ];
+then
+	mkdir "./tmp";
+fi 
+pwd
+echo -n "Creating Temporary Directory: "
+sleep 2
+echo "Complete!"
+
+echo -n "Objective 1: Temporary Directory Created: "
+sleep 2
+echo "Complete!"
+cd "./tmp"
+pwd
+ls -la
+sleep 1
+touch foobar
+echo -n "Let There Be Foobar: "
+sleep 3
+echo "Complete!"
+
+ls -la
+sleep 3 
+echo -n "Objective 2: Create A File: "
+sleep 1
+echo "Complete!"
+echo -n "Removing File: "
+sleep 3
+echo "Complete!"
+
+rm foobar
+ls -la
+sleep 1
+echo -n "Final Objective: Remove File: "
+sleep 1
+echo "Complete!"
