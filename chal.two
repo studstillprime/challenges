@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Challenge 2: Create 100 Files of type 1.txt reads "this is file 1", 2.txt reads "this is file 2", and so on!
+
+clear
+
+if [ !  -d "./tmp/lesson2" ];
+then
+	mkdir -p "./tmp/lesson2";
+fi 
+cd "./tmp/lesson2"
+
+for f in {1..100};
+do
+	echo "this is file $f" > $f.txt;
+done
+
+echo -n "Creating Challenge Space and Files"
+for dots in {1..4};
+do
+	echo -n "."
+	sleep 1
+done
+echo "completed!"
+sleep 2 
+
+echo " "
+echo "Input File Number For Confirmation: "
+echo " "
+read -p "            #" tag
+echo -n "            "
+for dots in {1..3};
+do
+	        echo -n "."
+		        sleep 1
+		done         
+echo " "
+echo -n "Directory Is  "
+pwd
+sleep 1
+echo " "
+echo "Files in Directory:"
+echo " "
+ls
+sleep 1
+echo " "
+echo "Contents of File #$tag: $(cat "$tag.txt")"
+echo " "
+sleep 3
+echo -n "Confirmation: Confirmed!"
+sleep 2
+echo " "
+for dots in {1..3};
+do
+	        echo "         --"
+		        sleep 1
+		done         
+echo "Challenge Completed!"
+echo " "
+sleep 3
