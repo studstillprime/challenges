@@ -1,0 +1,96 @@
+#!/bin/bash
+
+# Challenge 3: 
+
+### Functions
+
+#  still thinking quickmode(){
+
+wherewhat(){
+echo " "
+echo -n "Directory Is  "
+pwd
+sleep 1
+echo " "
+echo "Files in Directory:"
+echo " "
+ls
+sleep 1
+echo " "
+}
+
+clear
+
+if [ !  -d "./tmp/domains" ];
+then
+	mkdir -p "./tmp/domains";
+fi 
+cd "./tmp/domains"
+
+echo -e 'google.com\nreddit.com\ngithub.com\nexample.com\nkevops.com' > domains.txt 
+
+
+for d in $(cat domains.txt); do
+	dig +short A $d | head -1 > $d.txt
+done
+echo -n "Creating Challenge Space and Files"
+for dots in {1..3};
+do
+	echo -n "."
+	sleep 1
+done
+echo "completed!"
+sleep 2 
+
+echo " "
+echo "Input Website for Confirmation: "
+echo " "
+read -p "            " tag
+
+if [ ! -f "$tag.txt" ];
+then 
+	dig +short A $tag | head -1 > $tag.txt;
+	echo "$tag" >> domains.txt
+	echo -n "               "
+	for dots in {1..3};
+	do
+	echo -n ".."
+	sleep 1
+done                
+echo ""
+echo "           New Domain Added!"
+fi
+
+echo -n "               "
+for dots in {1..3};
+do
+	        echo -n ".."
+		        sleep 1
+
+done
+
+wherewhat
+
+echo "First A Record For $tag: $(cat "$tag.txt")"
+echo " "
+sleep 3
+echo -n "Confirmation: Confirmed!"
+sleep 2
+echo " "
+for dots in {1..3};
+do
+	        echo "         --"
+		        sleep 1
+		done         
+echo "Challenge Completed!";
+echo " "
+sleep 3
+
+read -p "Remove Challenge Directory and Files? [Y/N]?" ans | tr '[:upper:]' '[:lower:]'
+if [ "$ans" = "y" ] || [ "$ans" = "yes" ];
+then
+	rm -r $(pwd); echo "Challenge Files Removed!";
+else
+	echo "Files Not Removed!"
+fi
+echo $ans
